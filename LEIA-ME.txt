@@ -1,0 +1,19 @@
+GRAO A GRAO - COMO ABRIR NO VS CODE
+
+1) Descompacte o grao-a-grao.zip (nao abra o index.html de dentro do zip).
+2) No VS Code: Arquivo > Abrir Pasta... e escolha a pasta "grao-a-grao".
+3) Abra o index.html e clique em "Go Live" (extensao Live Server) ou de duplo clique no arquivo.
+
+ESTRUTURA (as pastas precisam ficar assim):
+  index.html          <- so a estrutura (HTML)
+  css/styles.css      <- todo o visual (CSS)
+  js/main.js          <- animacoes, efeitos e a simulacao de pontos (JavaScript)
+  assets/             <- logo, fotos do hero e Dona Papuda
+  assets/png/         <- logos, emblema, selo, moeda e Dona Papuda com fundo transparente
+
+PARA PUBLICAR NO GITHUB PAGES COM UM SO ARQUIVO:
+  use publicar/index.html (tem tudo dentro; nao depende de pastas).
+
+Se aparecer so texto de codigo ou a pagina sem estilo:
+  - o index.html precisa estar na mesma pasta que css, js e assets;
+  - o nome precisa ser exatamente css/styles.css (maiusculas importam no GitHub Pages).
