@@ -101,3 +101,4 @@ if(sim){
  if(M.length){const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)L.forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-35% 0px -55% 0px'});M.forEach(m=>o.observe(m))}
  d.querySelectorAll('.pgrid').forEach(el=>io.observe(el))}
 })();
+//teoria
