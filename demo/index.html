@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grão a Grão — Demonstração</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+<style>
+:root{--brown:#5D3E32;--green:#305C43;--cream:#F6F0E4;--mute:#7a665d;--line:rgba(93,62,50,.12);--gold:#D6A52B;--out:cubic-bezier(.16,1,.3,1);--spring:cubic-bezier(.34,1.56,.64,1)}
+*{box-sizing:border-box;margin:0}
+body{font:400 15px/1.45 Inter,system-ui,sans-serif;color:var(--brown);background:linear-gradient(#fffdf9,#F6F0E4);min-height:100vh;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.big{font-family:"Plus Jakarta Sans",Inter,sans-serif;letter-spacing:-.035em;line-height:1.1}
+button,input,select{font:inherit;color:inherit}
+.app{max-width:760px;margin:auto;padding:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
+.top img{height:30px;width:auto}
+.who{display:flex;align-items:center;gap:8px;font-size:13px;min-width:0}.who b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card{background:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.9);box-shadow:0 0 0 1px var(--line),0 22px 44px -28px rgba(60,38,24,.4);border-radius:24px;padding:18px;margin-bottom:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 22px;border:0;border-radius:999px;background:var(--green);color:#fff;font-weight:600;cursor:pointer;box-shadow:0 4px 0 #1f3d2c;transition:transform .3s var(--spring)}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #1f3d2c}
+.btn.o{background:#fff;color:var(--brown);box-shadow:0 0 0 1px rgba(93,62,50,.18),0 4px 0 rgba(93,62,50,.18)}
+.btn.s{min-height:36px;padding:6px 14px;font-size:13px}.btn.w{width:100%}.btn:disabled{opacity:.5;cursor:default}
+.link{background:none;border:0;color:var(--green);text-decoration:underline;cursor:pointer;font-weight:500;min-height:36px}
+label{display:grid;gap:5px;font-size:13px;font-weight:600;margin-bottom:12px}
+input,select{width:100%;min-height:46px;padding:10px 14px;border:1px solid rgba(93,62,50,.22);border-radius:14px;background:#fff;font-weight:400}
+input:focus,select:focus,.btn:focus-visible,.link:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:rgba(93,62,50,.07);border-radius:999px;padding:4px;margin-bottom:16px}
+.seg button{border:0;background:none;border-radius:999px;min-height:40px;font-weight:600;color:var(--mute);cursor:pointer}.seg .on{background:#fff;color:var(--green);box-shadow:0 2px 8px rgba(60,38,24,.15)}
+.hero{display:grid;gap:12px;text-align:center;padding:10px 0 18px}.hero img{width:150px;margin:auto}.hero h1{font-size:clamp(1.7rem,7vw,2.3rem)}.hero p{color:var(--mute)}
+.err{color:#b3261e;font-size:13px;min-height:18px;margin-bottom:8px}
+.chip{display:inline-block;font:600 11px Inter;padding:3px 10px;border-radius:99px;background:rgba(48,92,67,.1);color:var(--green);white-space:nowrap}.chip.g{background:rgba(214,165,43,.2);color:#8a6a10}
+.grid{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+.m{position:relative;width:128px;height:128px}.m svg{width:100%;height:100%;transform:rotate(-90deg)}
+.m .t{fill:none;stroke:rgba(93,62,50,.12);stroke-width:9}.m .p{fill:none;stroke:var(--green);stroke-width:9;stroke-linecap:round;stroke-dasharray:327;transition:stroke-dashoffset 1s var(--out)}
+.m b{position:absolute;inset:0;display:grid;place-content:center;text-align:center;font:800 30px "Plus Jakarta Sans";letter-spacing:-.04em;line-height:1}.m small{font:400 11px Inter;color:var(--mute);margin-top:3px}
+.seals{display:flex;gap:10px;margin-bottom:12px}.seals img{width:58px;height:58px;border-radius:50%;border:2px solid var(--gold);background:#fffaf0;padding:6px}.seals .off{filter:grayscale(1);opacity:.35;border:1.5px dashed rgba(93,62,50,.4)}
+.cq{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;border:1px dashed rgba(93,62,50,.3);color:var(--mute)}.cq b{display:block;color:var(--brown);font-size:14px}.cq.on{border:1px solid var(--green);background:rgba(48,92,67,.07)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-top:1px solid var(--line)}.li:first-of-type{border-top:0}.li small{color:var(--mute);display:block;font-size:12px}
+.stat{text-align:center}.stat .big{font-size:2.2rem;color:var(--green)}.stat span{font-size:12px;color:var(--mute)}
+.toast{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);width:min(calc(100% - 24px),520px);z-index:10;background:var(--green);color:#fff;padding:12px 16px;border-radius:16px;font-weight:500;box-shadow:0 18px 30px -14px rgba(48,92,67,.6);animation:tup .5s var(--spring)}@keyframes tup{from{opacity:0;transform:translate(-50%,14px)}}.app{padding-bottom:90px}@keyframes up{from{opacity:0;transform:translateY(14px)}}
+.cert{text-align:center;border:1.5px solid var(--green);outline:1px solid var(--green);outline-offset:-8px;border-radius:18px;padding:26px 16px;display:grid;gap:8px;justify-items:center;background:#fff;margin-bottom:14px;animation:up .6s var(--spring)}
+.cert img{width:120px}.cert h3{color:var(--green);font-size:1.8rem}.cert .nm{border-bottom:1.5px solid var(--brown);padding:2px 18px;font-weight:700}
+.sub{font-size:13px;color:var(--mute)}.mt{margin-top:12px}
+@media(max-width:480px){.grid{grid-template-columns:1fr;justify-items:center;text-align:center}.seals{justify-content:center}.two{grid-template-columns:1fr}.card{padding:15px;border-radius:20px}.top img{height:26px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body><div class="app" id="app"></div>
+<script>
+(()=>{
+const K='gag_demo_v1',E=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const P=40,PER=100,NEED=3,ITEMS=['Arroz','Feijão','Macarrão','Pão','Frutas','Leite'];
+let mem=null,mode='login',err='',toast='';
+if(/reset=1/.test(location.search)){try{localStorage.removeItem(K)}catch(e){}}
+const seed=()=>({users:[{id:'u1',name:'Padaria Sol',email:'padaria@demo.com',pw:'123456',role:'doador'},{id:'u2',name:'Lar Esperança',email:'lar@demo.com',pw:'123456',role:'receptor'}],don:[],sess:null,n:1});
+const load=()=>{try{const v=JSON.parse(localStorage.getItem(K));if(v)return v}catch(e){}return mem};
+let S=load()||seed();
+const save=()=>{mem=S;try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const U=id=>S.users.find(u=>u.id===id),me=()=>U(S.sess);
+const name=id=>(U(id)||{name:'Doador exemplo'}).name;
+const pts=id=>S.don.filter(x=>x.from===id&&x.st==='recebida').length*P;
+const $=s=>document.querySelector(s),app=$('#app');
+const head=u=>`<div class="top"><img src="../assets/png/logo-grao-a-grao.png" alt="Grão a Grão">${u?`<div class="who"><span class="chip ${u.role==='doador'?'':'g'}">${u.role==='doador'?'Doador':'Receptor'}</span><b>${E(u.name)}</b><button class="link" data-a="out">Sair</button></div>`:''}</div>`;
+const auth=()=>`${head()}<div class="hero"><img src="../assets/png/dona-papuda.png" alt="Dona Papuda"><h1>Cada grão conta.</h1><p>Crie uma conta e simule uma doação ou um recebimento.</p></div>
+<div class="card"><div class="seg" role="tablist"><button class="${mode==='login'?'on':''}" data-a="mode" data-v="login">Entrar</button><button class="${mode==='signup'?'on':''}" data-a="mode" data-v="signup">Criar conta</button></div>
+<form id="f" novalidate>${mode==='signup'?`<label>Nome da instituição<input name="name" autocomplete="organization" required></label>`:''}
+<label>E-mail<input name="email" type="email" autocomplete="email" required></label><label>Senha<input name="pw" type="password" autocomplete="${mode==='login'?'current-password':'new-password'}" minlength="4" required></label>
+${mode==='signup'?`<label>Eu sou<select name="role"><option value="doador">Doador (quero doar alimentos)</option><option value="receptor">Receptor (recebo doações)</option></select></label>`:''}
+<div class="err" role="alert">${E(err)}</div><button class="btn w" type="submit">${mode==='login'?'Entrar':'Criar conta e entrar'}</button></form>
+${mode==='login'?`<p class="sub mt">Contas de teste:</p><div class="two mt"><button class="btn o s" data-a="fill" data-v="padaria@demo.com">Doador</button><button class="btn o s" data-a="fill" data-v="lar@demo.com">Receptor</button></div>`:''}</div>`;
+const meter=p=>{const t=Math.min(NEED,Math.floor(p/PER)),dn=t>=NEED,pr=dn?1:(p%PER)/PER;return `<div class="m"><svg viewBox="0 0 120 120"><circle class="t" cx="60" cy="60" r="52"/><circle class="p" cx="60" cy="60" r="52" style="stroke-dashoffset:${327*(1-pr)};${dn?'stroke:#D6A52B':''}"/></svg><b>${p}<small>Grão Verde</small></b></div>`};
+const donor=u=>{const p=pts(u.id),e=Math.min(NEED,Math.floor(p/PER)),dn=e>=NEED,rc=S.users.filter(x=>x.role==='receptor'),mine=S.don.filter(x=>x.from===u.id).slice().reverse();
+return `${head(u)}${dn?`<div class="cert"><img src="../assets/png/logo-grao-a-grao.png" alt=""><span class="sub">Certificado de reconhecimento</span><h3>Amigo da ONG</h3><div class="nm">${E(u.name)}</div><span class="chip g">Documento demonstrativo — sem validade</span></div>`:''}
+<div class="card"><div class="grid">${meter(p)}<div><div class="seals">${[1,2,3].map(i=>`<img src="../assets/png/mao-${i}.png" class="${i>e?'off':''}" alt="Selo ${i}">`).join('')}</div><div class="cq ${dn?'on':''}"><div><b>Certificado Amigo da ONG</b><span class="sub">${dn?'Liberado':'Bloqueado · faltam '+(NEED-e)+' selo'+(NEED-e>1?'s':'')}</span></div></div></div></div><p class="sub mt">+${P} pontos a cada doação confirmada pela instituição · ${PER} pontos formam 1 selo · ${NEED} selos liberam o certificado.</p></div>
+<div class="card"><h2 style="font-size:1.3rem;margin-bottom:12px">Registrar doação</h2><form id="d" novalidate><div class="two"><label>Alimento<select name="item">${ITEMS.map(i=>`<option>${i}</option>`).join('')}</select></label><label>Quantidade (kg)<input name="qty" type="number" min="1" max="999" value="10" inputmode="numeric"></label></div>
+<label>Instituição de destino<select name="to">${rc.map(r=>`<option value="${r.id}">${E(r.name)}</option>`).join('')}</select></label><div class="err" role="alert">${E(err)}</div><button class="btn w" type="submit">Doar agora</button></form></div>
+<div class="card"><h2 style="font-size:1.3rem;margin-bottom:6px">Minhas doações</h2>${mine.length?mine.map(x=>`<div class="li"><div><b>${E(x.item)} · ${x.qty} kg</b><small>para ${E(name(x.to))}</small></div><span class="chip ${x.st==='recebida'?'':'g'}">${x.st==='recebida'?'Recebida · +'+P:'A caminho'}</span></div>`).join(''):'<p class="sub">Nenhuma doação ainda. Registre a primeira acima.</p>'}</div>${toast?`<div class="toast" role="status">${E(toast)}</div>`:''}`};
+const recv=u=>{const all=S.don.filter(x=>x.to===u.id).slice().reverse(),pe=all.filter(x=>x.st!=='recebida'),ok=all.filter(x=>x.st==='recebida');
+return `${head(u)}<div class="two"><div class="card stat"><div class="big">${pe.length}</div><span>A caminho</span></div><div class="card stat"><div class="big">${ok.length}</div><span>Recebidas</span></div></div>
+<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px"><h2 style="font-size:1.3rem">Doações a caminho</h2><button class="btn o s" data-a="sim">Simular chegada de doação</button></div>
+${pe.length?pe.map(x=>`<div class="li"><div><b>${E(x.item)} · ${x.qty} kg</b><small>de ${E(name(x.from))}</small></div><button class="btn s" data-a="ok" data-v="${x.id}">Confirmar recebimento</button></div>`).join(''):'<p class="sub">Nada a caminho. Entre como doador e doe para esta instituição, ou use o botão acima.</p>'}</div>
+<div class="card"><h2 style="font-size:1.3rem;margin-bottom:6px">Comprovantes</h2>${ok.length?ok.map(x=>`<div class="li"><div><b>${E(x.item)} · ${x.qty} kg</b><small>de ${E(name(x.from))} · comprovante #${String(x.id).padStart(4,'0')}</small></div><span class="chip">Recebida</span></div>`).join(''):'<p class="sub">Os recebimentos confirmados aparecem aqui.</p>'}</div>${toast?`<div class="toast" role="status">${E(toast)}</div>`:''}`};
+const render=()=>{const u=me();app.innerHTML=!u?auth():u.role==='doador'?donor(u):recv(u);app.scrollIntoView&&0;window.scrollTo(0,0)};
+const draw=()=>{const y=scrollY;const u=me();app.innerHTML=!u?auth():u.role==='doador'?donor(u):recv(u);scrollTo(0,y)};
+const say=m=>{toast=m;draw();setTimeout(()=>{if(toast===m){toast='';draw()}},3200)};
+app.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,v=b.dataset.v;
+ if(a==='mode'){mode=v;err='';render()}
+ if(a==='fill'){const u=S.users.find(x=>x.email===v);const f=$('#f');if(f&&u){f.email.value=u.email;f.pw.value=u.pw}}
+ if(a==='out'){S.sess=null;save();err='';toast='';mode='login';render()}
+ if(a==='ok'){const x=S.don.find(z=>z.id==v);if(x){x.st='recebida';save();say('Recebimento confirmado! O doador ganhou +'+P+' Grão Verde.')}}
+ if(a==='sim'){const u=me();S.don.push({id:S.n++,from:'sim',to:u.id,item:ITEMS[Math.floor(Math.random()*ITEMS.length)],qty:5+Math.floor(Math.random()*20),st:'caminho'});save();say('Uma nova doação está a caminho.')}});
+app.addEventListener('submit',e=>{e.preventDefault();const f=e.target,v=Object.fromEntries(new FormData(f));
+ if(f.id==='f'){const em=(v.email||'').trim().toLowerCase();
+  if(!/^\S+@\S+\.\S+$/.test(em)){err='Informe um e-mail válido.';return draw()}
+  if(mode==='signup'){const nm=(v.name||'').trim();if(nm.length<2){err='Informe o nome da instituição.';return draw()}
+   if((v.pw||'').length<4){err='A senha precisa de 4 caracteres ou mais.';return draw()}
+   if(S.users.some(u=>u.email===em)){err='Este e-mail já tem conta. Use “Entrar”.';return draw()}
+   const u={id:'u'+(Date.now()%1e9),name:nm,email:em,pw:v.pw,role:v.role};S.users.push(u);S.sess=u.id}
+  else{const u=S.users.find(x=>x.email===em&&x.pw===v.pw);if(!u){err='E-mail ou senha incorretos.';return draw()}S.sess=u.id}
+  err='';save();render()}
+ if(f.id==='d'){const q=parseInt(v.qty,10),u=me();
+  if(!q||q<1){err='Informe uma quantidade válida.';return draw()}
+  if(!v.to){err='Nenhuma instituição disponível.';return draw()}
+  err='';S.don.push({id:S.n++,from:u.id,to:v.to,item:v.item,qty:q,st:'caminho'});save();say('Doação registrada! Quando '+name(v.to)+' confirmar, você ganha +'+P+' Grão Verde.')}});
+render();
+})();
+</script></body></html>
