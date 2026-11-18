@@ -484,3 +484,18 @@ nav ul a.act{color:var(--green);font-weight:700}
 .ndl{position:absolute;z-index:4;pointer-events:none;width:32px;height:64px;opacity:0;transform:translateY(-10px);transition:opacity .8s ease .2s,transform 1s var(--out) .2s;filter:drop-shadow(0 2px 1.5px rgba(60,38,24,.25))}
 .sc-card.in .ndl{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.stitch{clip-path:none;transition:none}.ndl{opacity:1;transform:none;transition:none}}
+
+.mf img{display:block;width:100%;height:100%;object-fit:cover}
+/* ===== barra de navegação (ajuste) ===== */
+nav{max-width:1120px;min-width:0;padding:.5rem .55rem .5rem 1.1rem;gap:.8rem}
+nav .btn{flex:none;margin-left:auto}
+nav .brand{flex:none}
+nav ul{min-width:0}
+header{left:.6rem;right:.6rem}
+@media(min-width:1180px){nav ul{margin:0 auto;gap:clamp(.7rem,1.3vw,1.4rem)}nav ul a{font-size:.88rem}}
+@media(max-width:1179px){nav{flex-wrap:wrap}nav ul{order:3;flex:1 1 100%;width:100%;overflow-x:auto;justify-content:flex-start}}
+#publico{overflow-x:clip}
+
+@media(min-width:1180px){nav ul{margin:0 0 0 auto}nav .btn{margin-left:1.1rem}}
+
+@media(min-width:1180px){nav{width:auto}nav ul{margin:0 0 0 .9rem}nav .btn{margin-left:.9rem}}
