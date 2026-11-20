@@ -79,3 +79,28 @@
  .team .mf,.team .mb:nth-child(even) .mf{order:0;justify-self:start;max-width:340px}
  .team .mb:nth-child(even) .mt{justify-self:start}
 }
+
+/* menu: uma linha só no celular */
+.nv{display:none}
+@media(max-width:899px){
+ header{inset:.6rem .6rem auto}
+ nav{position:relative;flex-wrap:nowrap!important;gap:.6rem;padding:.45rem .5rem .45rem 1rem}
+ nav .brand{flex:none}nav .logo{width:112px}
+ .nv{display:inline-flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;flex:none;width:40px;height:40px;margin-left:auto;border:1px solid var(--line);border-radius:50%;background:#fff;cursor:pointer}
+ .nv span{display:block;width:16px;height:2px;border-radius:2px;background:var(--brown);transition:transform .3s,opacity .3s}
+ nav.open .nv span:nth-child(1){transform:translateY(6px) rotate(45deg)}nav.open .nv span:nth-child(2){opacity:0}nav.open .nv span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+ nav .btn{flex:none;margin-left:0}
+ nav ul{display:none!important}
+ nav.open ul{display:flex!important;flex-direction:column;gap:0;position:absolute;top:calc(100% + .5rem);left:0;right:0;width:auto;padding:.5rem;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 50px -20px rgba(40,25,15,.35);overflow:visible}
+ nav.open ul li{width:100%}
+ nav.open ul a{display:block;padding:.85rem 1rem;font-size:1rem;border-radius:14px}
+ nav.open ul a.act{background:rgba(48,92,67,.08)}
+}
+
+/* mobile limpo */
+@media(max-width:899px){
+ .hand{display:none!important}
+ .team .mf,.team .mb:nth-child(even) .mf{max-width:240px}
+ .team .mb,.team .mb:nth-child(even){gap:.9rem}
+ .sx-pbz{height:600px}
+}

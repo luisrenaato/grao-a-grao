@@ -39,8 +39,8 @@ const build=(el,list,o)=>{
  if(window.ResizeObserver)new ResizeObserver(fit).observe(box);fit();set(0);
 };
 const P=d.getElementById('sx-donor'),R=d.getElementById('sx-recv'),Mc=d.getElementById('sx-mac');
-if(P)build(P,donor,{cls:'sx-ph',w:300,h:580,ic:[0,1,2,3]});
-if(R)build(R,recv,{cls:'sx-ph',w:300,h:580,ic:[0,1,2,3,4],ms:3800});
+if(P)build(P,donor,{cls:'sx-ph',w:300,h:500,ic:[0,1,2,3]});
+if(R)build(R,recv,{cls:'sx-ph',w:300,h:500,ic:[0,1,2,3,4],ms:3800});
 if(Mc)build(Mc,mac,{cls:'sx-mc',w:960,h:600,mac:1,lid:Mc.querySelector('.sx-lid'),ms:4200});
 const f=d.getElementById('sx-frame'),r=d.getElementById('sx-reset');
 const ld=d.getElementById('sx-ld'),ST=[...d.querySelectorAll('#sx-steps li')],done=new Set();
@@ -54,4 +54,6 @@ if(!rm&&matchMedia('(hover:hover)').matches)d.querySelectorAll('.sx-ph,.sx-lid')
 d.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const v=b.dataset.copy,t=b.textContent;let ok=false;try{await navigator.clipboard.writeText(v);ok=true}catch(e){try{const x=d.createElement('textarea');x.value=v;x.style.cssText='position:fixed;opacity:0';d.body.appendChild(x);x.select();ok=d.execCommand('copy');x.remove()}catch(e2){}}
 if(!ok){const c=b.parentElement.querySelector('code');if(c){const r=d.createRange();r.selectNodeContents(c);const s=getSelection();s.removeAllRanges();s.addRange(r)}}
 b.textContent=ok?'Copiado ✓':'Selecionado';b.classList.toggle('ok',ok);setTimeout(()=>{b.textContent=t;b.classList.remove('ok')},1500)}));
+const nv=d.querySelector('.nv'),nav=nv&&nv.closest('nav');if(nv){const cl=()=>{nav.classList.remove('open');nv.setAttribute('aria-expanded','false');nv.setAttribute('aria-label','Abrir menu')};nv.addEventListener('click',e=>{e.stopPropagation();const o=nav.classList.toggle('open');nv.setAttribute('aria-expanded',o);nv.setAttribute('aria-label',o?'Fechar menu':'Abrir menu')});nav.querySelectorAll('ul a,.btn').forEach(a=>a.addEventListener('click',cl));d.addEventListener('click',e=>{if(!nav.contains(e.target))cl()});d.addEventListener('keydown',e=>{if(e.key==='Escape')cl()});matchMedia('(min-width:900px)').addEventListener('change',cl)}
+const dt=d.getElementById('sx-cred');if(dt){const mq=matchMedia('(min-width:900px)');const f=()=>{dt.open=mq.matches};f();mq.addEventListener('change',f)}
 })();

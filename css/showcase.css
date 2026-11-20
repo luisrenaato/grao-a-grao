@@ -19,7 +19,7 @@
 .sx-tabs button{font:500 .8rem Inter,sans-serif;color:var(--mute);background:#fff;border:1px solid var(--line);border-radius:999px;padding:.4rem .85rem;min-height:34px;cursor:pointer;transition:all .3s}
 .sx-tabs button.on{background:var(--green);border-color:var(--green);color:#fff}
 /* conteúdo dos frames */
-.sx-ph .sx-in{width:300px;height:580px;font:400 13px/1.4 Inter,sans-serif;color:var(--brown)}
+.sx-ph .sx-in{width:300px;height:500px;font:400 13px/1.4 Inter,sans-serif;color:var(--brown)}
 .sx-ph .sx-s{padding:46px 18px 80px;display:flex;flex-direction:column;gap:12px;background:linear-gradient(#fff,#faf6ee)}
 .sx-h{font:800 20px/1.15 "Plus Jakarta Sans",Inter,sans-serif;letter-spacing:-.03em}
 .sx-sm{font-size:11.5px;color:var(--mute)}
@@ -137,3 +137,13 @@
 .sx-f button{font:600 .74rem Inter,sans-serif;min-height:32px;padding:0 .8rem;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--green);cursor:pointer;transition:all .25s}.sx-f button:hover{border-color:var(--green)}.sx-f button.ok{background:var(--green);border-color:var(--green);color:#fff}
 .sx-qa button{font-size:.8rem}
 .sx-f{grid-template-columns:minmax(0,1fr) 5.6rem;gap:.25rem .5rem}.sx-f small{grid-column:1/-1}.sx-f button{min-width:5.6rem;padding:0 .4rem}
+
+.sx-pbz{transform:none!important;backface-visibility:visible!important}.sx-demo{perspective:none}
+@media(max-width:899px),(hover:none){.sx-ph,.sx-lid{transform:none!important}#sx-donor,#sx-recv,.sx-mac{perspective:none}}
+@media(max-width:860px){.sx-pbz{height:640px}}
+
+details.sx-cred summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.7rem 1rem;border:1px solid var(--line);border-radius:14px;background:#fffdf9;font:700 .85rem Inter,sans-serif;color:var(--brown)}
+details.sx-cred summary::-webkit-details-marker{display:none}details.sx-cred summary small{color:var(--mute);font-weight:500}
+details.sx-cred summary::after{content:"+";font-size:1.2rem;line-height:1;color:var(--green)}details.sx-cred[open] summary::after{content:"–"}
+.sx-cb{display:grid;gap:.6rem;margin-top:.6rem}
+@media(min-width:900px){details.sx-cred summary{pointer-events:none}details.sx-cred summary::after{display:none}}
